@@ -16,10 +16,13 @@ Usage
 ``` java
 import ws.vinta.pangu.Pangu;
 
-Pangu pangu = new Pangu();
-
-// newText will be "請問 Jackie 的鼻子有幾個？123 個！"
-String newText = pangu.spacingText("請問Jackie的鼻子有幾個？123個！");
+public class Main {
+    public static void main(String[] args) {
+        Pangu pangu = new Pangu();
+        String newText = pangu.spacingText("請問Jackie的鼻子有幾個？123個！");
+        System.out.println(newText); // will be "請問 Jackie 的鼻子有幾個？123 個！"
+    }
+}
 ```
 
 Run Tests
