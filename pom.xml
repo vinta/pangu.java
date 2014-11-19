@@ -9,7 +9,7 @@
     <version>7</version>
   </parent>
 
-  <groupId>ws.vinta.pangu</groupId>
+  <groupId>ws.vinta</groupId>
   <artifactId>pangu</artifactId>
   <version>1.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -21,9 +21,8 @@
 
   <licenses>
     <license>
-      <name>MIT License</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
-      <distribution>repo</distribution>
+      <name>The MIT License (MIT)</name>
+      <url>http://opensource.org/licenses/mit-license.php</url>
     </license>
   </licenses>
 
@@ -142,7 +141,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.5</version>
+        <version>1.6.3</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
