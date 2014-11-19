@@ -11,7 +11,7 @@
 
   <groupId>ws.vinta</groupId>
   <artifactId>pangu</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Pangu</name>
@@ -21,8 +21,9 @@
 
   <licenses>
     <license>
-      <name>The MIT License (MIT)</name>
-      <url>http://opensource.org/licenses/mit-license.php</url>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
     </license>
   </licenses>
 
@@ -39,7 +40,6 @@
     <connection>scm:git:git@github.com:vinta/pangu.java.git</connection>
     <developerConnection>scm:git:git@github.com:vinta/pangu.java.git</developerConnection>
     <url>git@github.com:vinta/pangu.java.git</url>
-    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
@@ -141,7 +141,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.3</version>
+        <version>1.6.5</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
