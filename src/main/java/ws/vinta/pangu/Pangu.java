@@ -31,20 +31,50 @@ public class Pangu {
      * CJK: Chinese, Japanese, Korean
      * ANS: Alphabet, Number, Symbol
      */
-    private static final Pattern CJK_ANS = Pattern.compile("([\\p{InCJKUnifiedIdeographs}])([a-z0-9`~@\\$%\\^&\\*\\-_\\+=\\|\\\\/])", Pattern.CASE_INSENSITIVE);
-    private static final Pattern ANS_CJK = Pattern.compile("([a-z0-9`~!\\$%\\^&\\*\\-_\\+=\\|\\\\;:,\\./\\?])(\\p{InCJKUnifiedIdeographs})", Pattern.CASE_INSENSITIVE);
+    private static final Pattern CJK_ANS = Pattern.compile(
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])" +
+        "([a-z0-9`~@\\$%\\^&\\*\\-_\\+=\\|\\\\/])",
+        Pattern.CASE_INSENSITIVE
+    );
+    private static final Pattern ANS_CJK = Pattern.compile(
+        "([a-z0-9`~!\\$%\\^&\\*\\-_\\+=\\|\\\\;:,\\./\\?])" +
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])",
+        Pattern.CASE_INSENSITIVE
+    );
 
-    private static final Pattern CJK_QUOTE = Pattern.compile("(\\p{InCJKUnifiedIdeographs})([\"'])", Pattern.CASE_INSENSITIVE);
-    private static final Pattern QUOTE_CJK = Pattern.compile("([\"'])(\\p{InCJKUnifiedIdeographs})", Pattern.CASE_INSENSITIVE);
-    private static final Pattern FIX_QUOTE = Pattern.compile("([\"'])(\\s*)(.+?)(\\s*)([\"'])", Pattern.CASE_INSENSITIVE);
+    private static final Pattern CJK_QUOTE = Pattern.compile(
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])" +
+        "([\"'])"
+    );
+    private static final Pattern QUOTE_CJK = Pattern.compile(
+        "([\"'])" +
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])"
+    );
+    private static final Pattern FIX_QUOTE = Pattern.compile("([\"'])(\\s*)(.+?)(\\s*)([\"'])");
 
-    private static final Pattern CJK_BRACKET_CJK = Pattern.compile("(\\p{InCJKUnifiedIdeographs})([\\({\\[]+(.*?)[\\)}\\]]+)(\\p{InCJKUnifiedIdeographs})", Pattern.CASE_INSENSITIVE);
-    private static final Pattern CJK_BRACKET = Pattern.compile("(\\p{InCJKUnifiedIdeographs})([\\(\\){}\\[\\]<>])", Pattern.CASE_INSENSITIVE);
-    private static final Pattern BRACKET_CJK = Pattern.compile("([\\(\\){}\\[\\]<>])(\\p{InCJKUnifiedIdeographs})", Pattern.CASE_INSENSITIVE);
-    private static final Pattern FIX_BRACKET = Pattern.compile("([(\\({\\[)]+)(\\s*)(.+?)(\\s*)([\\)}\\]]+)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern CJK_BRACKET_CJK = Pattern.compile(
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])" +
+        "([\\({\\[]+(.*?)[\\)}\\]]+)" +
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])"
+    );
+    private static final Pattern CJK_BRACKET = Pattern.compile(
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])" +
+        "([\\(\\){}\\[\\]<>])"
+    );
+    private static final Pattern BRACKET_CJK = Pattern.compile(
+        "([\\(\\){}\\[\\]<>])" +
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])"
+    );
+    private static final Pattern FIX_BRACKET = Pattern.compile("([(\\({\\[)]+)(\\s*)(.+?)(\\s*)([\\)}\\]]+)");
 
-    private static final Pattern CJK_HASH = Pattern.compile("(\\p{InCJKUnifiedIdeographs})(#(\\S+))", Pattern.CASE_INSENSITIVE);
-    private static final Pattern HASH_CJK = Pattern.compile("((\\S+)#)(\\p{InCJKUnifiedIdeographs})", Pattern.CASE_INSENSITIVE);
+    private static final Pattern CJK_HASH = Pattern.compile(
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])" +
+        "(#(\\S+))"
+    );
+    private static final Pattern HASH_CJK = Pattern.compile(
+        "((\\S+)#)" +
+        "([\\p{InHiragana}\\p{InKatakana}\\p{InBopomofo}\\p{InCJKCompatibilityIdeographs}\\p{InCJKUnifiedIdeographs}])"
+    );
 
     /**
      * Performs a paranoid text spacing on {@code text}.
