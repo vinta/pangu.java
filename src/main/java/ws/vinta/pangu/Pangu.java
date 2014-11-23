@@ -1,9 +1,10 @@
 /*
- * Created by Vinta on 2014/11/05.
+ * Created by Vinta Chen on 2014/11/05.
  */
 
 package ws.vinta.pangu;
 
+import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +17,9 @@ import java.util.regex.Pattern;
  * add whitespace between English and Chinese characters also have relationship problem. Almost 70 percent of them
  * will get married to the one they don't love, the rest only can left the heritage to their cat. Indeed,
  * love and writing need some space in good time.
+ *
+ * @author Vinta Chen
+ * @since 1.0.0
  */
 public class Pangu {
 
@@ -25,7 +29,7 @@ public class Pangu {
     public Pangu() {
     }
 
-    /**
+    /*
      * Some capturing group patterns for convenience.
      *
      * CJK: Chinese, Japanese, Korean
@@ -125,6 +129,40 @@ public class Pangu {
         text = acMatcher.replaceAll("$1 $2");
 
         return text;
+    }
+
+    /**
+     * @since 1.1.0
+     */
+    public void spacingFile(File inputFile, File outputFile) throws IOException {
+        // TODO: support charset
+
+        FileReader fr = new FileReader(inputFile);
+        BufferedReader br = new BufferedReader(fr);
+
+        FileWriter fw = new FileWriter(outputFile);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        try {
+            String line = br.readLine(); // readLine() do not contain newline char
+
+            while (line != null) {
+                line = spacingText(line);
+
+                // TODO: keep file's raw newline char from difference OS platform
+                bw.write(line);
+                bw.newLine();
+
+                line = br.readLine();
+            }
+        }
+        finally {
+            br.close();
+
+            if (bw != null) {
+                bw.close();
+            }
+        }
     }
 
 }
