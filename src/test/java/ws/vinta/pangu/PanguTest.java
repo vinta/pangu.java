@@ -1,9 +1,15 @@
 package ws.vinta.pangu;
 
 import static org.junit.Assert.*;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
-import org.junit.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class PanguTest {
 
@@ -13,6 +19,47 @@ public class PanguTest {
         String actual = pangu.spacingText(input);
 
         assertEquals(expected, actual);
+    }
+
+    private File getTestFile(String filePath) {
+        URL resourceUrl = getClass().getResource(filePath);
+        if (resourceUrl == null) {
+            throw new RuntimeException("no such file: " + filePath);
+        }
+
+        File file;
+        try {
+            file = new File(resourceUrl.toURI());
+        }
+        catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        return file;
+    }
+
+    private void assertFileContentEquals(File inputFile, File expectedFile) {
+        File outputFile;
+        try {
+            outputFile = File.createTempFile("pangu_test_", ".txt");
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            pangu.spacingFile(inputFile, outputFile);
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            assertEquals(FileUtils.readLines(expectedFile), FileUtils.readLines(outputFile));
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Before
@@ -443,6 +490,25 @@ public class PanguTest {
             "前面/後面",
             "前面 / 後面"
         );
+    }
+
+    @Test
+    public void testFile() throws IOException {
+        File inputFile = getTestFile("/test_file.txt");
+        File expectedFile = getTestFile("/test_file_expected.txt");
+
+        assertFileContentEquals(inputFile, expectedFile);
+    }
+    @Test
+    public void testFileWithMkdir() throws IOException {
+        String tmpDir = System.getProperty("java.io.tmpdir");
+
+        File inputFile = getTestFile("/test_file.txt");
+        File outputFile = new File(tmpDir + "1/2/3/test_file_output.txt");
+        File expectedFile = getTestFile("/test_file_expected.txt");
+
+        pangu.spacingFile(inputFile, outputFile);
+        assertEquals(FileUtils.readLines(expectedFile), FileUtils.readLines(outputFile));
     }
 
 }

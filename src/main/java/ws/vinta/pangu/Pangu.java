@@ -83,7 +83,7 @@ public class Pangu {
     /**
      * Performs a paranoid text spacing on {@code text}.
      *
-     * @param text the string you want to process.
+     * @param text  the string you want to process, must not be {@code null}.
      * @return a comfortable and readable version of {@code text} for paranoiac.
      */
     public String spacingText(String text) {
@@ -132,6 +132,12 @@ public class Pangu {
     }
 
     /**
+     * Performs a paranoid text spacing on {@code inputFile} and generate a new file {@code outputFile}.
+     *
+     * @param inputFile  an existing file to process, must not be {@code null}.
+     * @param outputFile  the processed file, must not be {@code null}.
+     * @throws IOException if an error occurs.
+     *
      * @since 1.1.0
      */
     public void spacingFile(File inputFile, File outputFile) throws IOException {
@@ -140,7 +146,8 @@ public class Pangu {
         FileReader fr = new FileReader(inputFile);
         BufferedReader br = new BufferedReader(fr);
 
-        FileWriter fw = new FileWriter(outputFile);
+        outputFile.getParentFile().mkdirs();
+        FileWriter fw = new FileWriter(outputFile, false);
         BufferedWriter bw = new BufferedWriter(fw);
 
         try {
@@ -159,6 +166,7 @@ public class Pangu {
         finally {
             br.close();
 
+            // 避免 writer 沒有實際操作就 close()，產生一個空檔案
             if (bw != null) {
                 bw.close();
             }
