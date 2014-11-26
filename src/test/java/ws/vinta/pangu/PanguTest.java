@@ -504,7 +504,7 @@ public class PanguTest {
         String tmpDir = System.getProperty("java.io.tmpdir");
 
         File inputFile = getTestFile("/test_file.txt");
-        File outputFile = new File(tmpDir + "1/2/3/test_file_output.txt");
+        File outputFile = new File(tmpDir + "/1/2/3/test_file_output.txt");
         File expectedFile = getTestFile("/test_file_expected.txt");
 
         pangu.spacingFile(inputFile, outputFile);
