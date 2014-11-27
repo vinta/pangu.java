@@ -10,8 +10,25 @@ Paranoid text spacing for good readability, to automatically insert whitespace b
 * Python version: [pangu.py](https://github.com/vinta/pangu.py)
 * Java version: [pangu.java](https://github.com/vinta/pangu.java)
 
-Usage
-=====
+## Download
+
+Download [the latest JAR](https://search.maven.org/remote_content?g=ws.vinta&a=pangu&v=LATEST) or grab via Maven:
+
+``` xml
+<dependency>
+  <groupId>ws.vinta</groupId>
+  <artifactId>pangu</artifactId>
+  <version>1.1.0</version>
+</dependency>
+```
+
+or Gradle:
+
+``` groovy
+compile 'ws.vinta:pangu:1.1.0'
+```
+
+## Usage
 
 ``` java
 import ws.vinta.pangu.Pangu;
@@ -25,8 +42,7 @@ public class Main {
 }
 ```
 
-Run Tests
-=========
+## Run Tests
 
 ``` bash
 $ mvn test
