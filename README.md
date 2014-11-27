@@ -12,7 +12,7 @@ Paranoid text spacing for good readability, to automatically insert whitespace b
 
 ## Download
 
-Download [the latest JAR](https://search.maven.org/remote_content?g=ws.vinta&a=pangu&v=LATEST) or grab via Maven:
+Download [the latest JAR](https://search.maven.org/remote_content?g=ws.vinta&a=pangu&v=LATEST) or grab via [Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22ws.vinta%22%20AND%20a%3A%22pangu%22):
 
 ``` xml
 <dependency>
