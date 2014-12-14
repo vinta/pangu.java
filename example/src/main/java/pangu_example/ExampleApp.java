@@ -2,7 +2,7 @@ package pangu_example;
 
 import ws.vinta.pangu.Pangu;
 
-public class App {
+public class ExampleApp {
     public static void main(String[] args) {
         Pangu pangu = new Pangu();
 
