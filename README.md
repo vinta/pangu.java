@@ -1,8 +1,6 @@
 Pangu.java
 ==========
 
-[![](https://img.shields.io/travis/vinta/pangu.java/master.svg?style=flat-square)](https://travis-ci.org/vinta/pangu.java)
-
 [![](https://img.shields.io/badge/made%20with-%e2%9d%a4-ff69b4.svg?style=flat-square)](https://vinta.ws/code/)
 
 Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean), half-width English, digit and symbol characters.
